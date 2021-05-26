@@ -1,0 +1,31 @@
+!---------------------------------------------------------------
+! ospf point-to-point mode
+!---------------------------------------------------------------
+!
+!--Router 1
+!
+interface [[r1-internal-network-interface]]
+ ip address [[r1-internal-ip]] [[r1-internal-subnet-mask]]
+!
+interface [[r1-p2p-interface]]
+ ip address [[r1-p2p-ip]] [[r1-p2p-subnet-mask]]
+!
+router ospf [[r1-ospf-process-id]]
+ log-adjacency-changes
+ network [[r1-p2p-ip]] 0.0.0.0 area 0
+ network [[r1-internal-network-ip]] [[r1-internal-wildcard-mask]] area 0
+!
+!
+!--Router 2
+!
+interface [[r2-internal-network-interface]]
+ ip address [[r2-internal-ip]] [[r2-internal-subnet-mask]]
+!
+interface [[r2-p2p-interface]]
+ ip address [[r2-p2p-ip]] [[r2-p2p-subnet-mask]]
+!
+router ospf [[r2-ospf-process-id]]
+log-adjacency-changes
+network [[r2-p2p-ip]] 0.0.0.0 area 0
+network [[r2-internal-network-ip]] [[r2-internal-wildcard-mask]] area 0
+!
