@@ -9,6 +9,7 @@ interface [[r1-internal-network-interface]]
 !
 interface [[r1-p2p-interface]]
  ip address [[r1-p2p-ip]] [[r1-p2p-subnet-mask]]
+ ip ospf network point-to-point
 !
 router ospf [[r1-ospf-process-id]]
  log-adjacency-changes
@@ -23,6 +24,7 @@ interface [[r2-internal-network-interface]]
 !
 interface [[r2-p2p-interface]]
  ip address [[r2-p2p-ip]] [[r2-p2p-subnet-mask]]
+ ip ospf network point-to-point
 !
 router ospf [[r2-ospf-process-id]]
 log-adjacency-changes
