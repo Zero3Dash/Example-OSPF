@@ -1,0 +1,27 @@
+router ospf 1
+	redistriute connected subnets
+
+router ospf 1
+	redistriute rip subnets metric-type 1
+	
+ip prefix-list ISP1 seq 10 permit 203.0.113.0/24 ge 30 le 30
+route-map CONN->OSPF permit
+	match ip address prefix-list ISP1
+	set metric-type type-1
+
+access-list 100 permit ip 203.0.113.0 0.0.0.255 host 255.255.255.252
+route-map CONN->OSPF permit
+	match ip address 100
+	set metric-type type-1
+
+route-map CONN->OSPF 20
+
+router ospf 1
+	redistriute connected route-map CONN->OSPF
+
+ip route 0.0.0.0 0.0.0.0 198.51.100.2
+router ospf 1
+	area 34 nssa default-information-originate
+
+router ospf 1
+	 default-information originate always
