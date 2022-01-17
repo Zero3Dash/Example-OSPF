@@ -25,3 +25,9 @@ router ospf 1
 
 router ospf 1
 	 default-information originate always
+
+------------------------------------------------
+OSPF Redistribute in to EIGRP
+------------------------------------------------
+router ospf 1
+  redistribute eigrp 10 metric-type 1 subnets tag [[tag]]
