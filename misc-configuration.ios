@@ -1,9 +1,20 @@
+------------------------------------------------
+OSPF Redistribute Connected Subnets
+------------------------------------------------
 router ospf 1
 	redistriute connected subnets
 
+------------------------------------------------
+OSPF Redistribute into rip with E1 metric
+------------------------------------------------
 router ospf 1
 	redistriute rip subnets metric-type 1
-	
+
+------------------------------------------------
+OSPF Route Map for Redistributing Connected into
+OSPF with E1 metric
+Prefix-List and Access Control List Methods
+------------------------------------------------
 ip prefix-list ISP1 seq 10 permit 203.0.113.0/24 ge 30 le 30
 route-map CONN->OSPF permit
 	match ip address prefix-list ISP1
@@ -19,10 +30,22 @@ route-map CONN->OSPF 20
 router ospf 1
 	redistriute connected route-map CONN->OSPF
 
+------------------------------------------------
+Redistribute Default Route into NSSA
+------------------------------------------------
 ip route 0.0.0.0 0.0.0.0 198.51.100.2
 router ospf 1
 	area 34 nssa default-information-originate
 
+------------------------------------------------
+Redistribute Default Route into OSPF
+------------------------------------------------
+router ospf 1
+	 default-information originate
+
+------------------------------------------------
+Redistribute Default Route into OSPF always ON
+------------------------------------------------
 router ospf 1
 	 default-information originate always
 
