@@ -1,5 +1,7 @@
+! 4PEG Configuration Template
+! http://4peg.com/MnZnVQ7nvqbn
 !---------------------------------------------------------------
-! ospf point-to-point mode
+! Cisco OSPF point-to-point mode
 !---------------------------------------------------------------
 !
 !--Router 1
